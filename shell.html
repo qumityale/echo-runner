@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Echo Runner</title>
+  <style>
+    body { margin:0; background:#0a0a1a; display:flex; flex-direction:column;
+           align-items:center; justify-content:center; height:100vh; }
+    canvas { display:block; border:1px solid #222244; }
+    p { color:#4466aa; font:13px monospace; margin-top:10px; letter-spacing:.05em; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+  <p>arrows / wasd — move &nbsp;|&nbsp; space — jump</p>
+  {{{ SCRIPT }}}
+  <script>
+    var Module = {
+      canvas: document.getElementById('canvas'),
+      print:    function(t){ console.log(t); },
+      printErr: function(t){ console.error(t); }
+    };
+  </script>
+</body>
+</html>
