@@ -15,10 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: mymindstorm/setup-emsdk@v14
-        with: { version: 3.1.51 }
+        with: { version: 3.1.47 }
       - run: |
           mkdir build
-          emcmake cmake -B build -DCMAKE_BUILD_TYPE=Release -DPLATFORM=Web
+          emcmake cmake -B build -DCMAKE_BUILD_TYPE=Release -DPLATFORM=Web \
+            -DCMAKE_EXE_LINKER_FLAGS="-s USE_GLFW=3 -s ASYNCIFY -s TOTAL_MEMORY=33554432 --shell-file ${GITHUB_WORKSPACE}/shell.html -s GL_ENABLE_GET_PROC_ADDRESS=1"
           emmake make -C build -j$(nproc)
           mkdir deploy
           cp build/EchoRunner.html deploy/index.html
